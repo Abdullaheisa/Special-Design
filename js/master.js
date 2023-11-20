@@ -78,5 +78,5 @@ let images = [
 
 setInterval(() => {
   let randomNum = Math.floor(Math.random() * images.length);
-  landingPage.style.backgroundImage = `url(/image/` + images[randomNum] + `)`;
+  landingPage.style.backgroundImage = `url(image/` + images[randomNum] + `)`;
 }, 10000);
