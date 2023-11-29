@@ -167,14 +167,7 @@ tLink.onclick = function (e) {
 // start Change BackGround
 let landingPage = document.querySelector(".landing-page");
 // Get Array Image
-let images = [
-  "bac1.jpg",
-  "bac2.jpg",
-  "bac3.jpg",
-  "bac4.jpg",
-  "bac5.jpg",
-  "bac6.jpg",
-];
+let images = ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "07.jpg"];
 
 // Function Background Randomize Imgs
 
@@ -190,3 +183,13 @@ function backgroundRandomize() {
   }
 }
 backgroundRandomize();
+// Select skills Selector
+let ourSkills = document.querySelector(".our-skills");
+let allSkills = document.querySelectorAll(".our-skills .skill-progress span");
+window.onscroll = function () {
+  if (window.scrollY >= ourSkills.offsetTop - 100) {
+    allSkills.forEach((span) => {
+      span.style.width = span.dataset.progress;
+    });
+  }
+};
