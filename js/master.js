@@ -9,6 +9,26 @@ if (mainColor !== null) {
     }
   });
 }
+//Random BackGround Option
+let randomBackgroundOption = true;
+let backgroundInterval;
+// Check if background of LocalStorage
+let backgroundLocalItem = localStorage.getItem("background-option");
+if (backgroundLocalItem !== null) {
+  if (backgroundLocalItem === "true") {
+    randomBackgroundOption = true;
+  } else {
+    randomBackgroundOption = false;
+  }
+  document.querySelectorAll(".background-random span").forEach((span) => {
+    span.classList.remove("active");
+  });
+  if (backgroundLocalItem == "true") {
+    document.querySelector(".background-random .yes").classList.add("active");
+  } else {
+    document.querySelector(".background-random .no").classList.add("active");
+  }
+}
 // Start Setting Box
 let setting = document.querySelector(".setting i");
 let settingBox = document.querySelector(".setting-box");
@@ -35,11 +55,33 @@ colorsLi.forEach((li) => {
       "--main-color",
       e.target.dataset.color
     );
+    // setItem To local storage
     localStorage.setItem("color-option", e.target.dataset.color);
     colorsLi.forEach((li) => {
       li.classList.remove("active");
     });
     e.target.classList.toggle("active");
+  });
+});
+// End Option Box Color
+// Start Option Box background random
+const backgroundEl = document.querySelectorAll(".background-random span");
+backgroundEl.forEach((span) => {
+  span.addEventListener("click", (e) => {
+    e.target.parentElement.querySelectorAll(".active").forEach((span) => {
+      span.classList.remove("active");
+    });
+    e.target.classList.toggle("active");
+    if (e.target.dataset.background === "yes") {
+      randomBackgroundOption = true;
+      backgroundRandomize();
+      localStorage.setItem("background-option", true);
+    } else {
+      randomBackgroundOption = false;
+      clearInterval(backgroundInterval);
+      backgroundRandomize();
+      localStorage.setItem("background-option", false);
+    }
   });
 });
 // End Option Box Color
@@ -76,7 +118,17 @@ let images = [
   "bac6.jpg",
 ];
 
-setInterval(() => {
-  let randomNum = Math.floor(Math.random() * images.length);
-  landingPage.style.backgroundImage = `url(image/` + images[randomNum] + `)`;
-}, 10000);
+// Function Background Randomize Imgs
+
+function backgroundRandomize() {
+  if (randomBackgroundOption === true) {
+    backgroundInterval = setInterval(() => {
+      // Get Number Random
+      let randomNum = Math.floor(Math.random() * images.length);
+      // Change Background Image Url
+      landingPage.style.backgroundImage =
+        `url(image/` + images[randomNum] + `)`;
+    }, 10000);
+  }
+}
+backgroundRandomize();
