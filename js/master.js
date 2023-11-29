@@ -36,6 +36,13 @@ let logoChange = localStorage.getItem("imgLogo");
 if (logoChange !== null) {
   logo.src = logoChange;
 }
+// Check if imgLogo of LocalStorage
+
+let heroLan = document.querySelector(".hero-animation img");
+let heroChange = localStorage.getItem("heroLan");
+if (heroChange !== null) {
+  heroLan.src = heroChange;
+}
 
 // Start Setting Box
 let setting = document.querySelector(".setting i");
@@ -81,20 +88,36 @@ colorsLi.forEach((li) => {
     } else if (e.target.dataset.color === "#03a9f4") {
       logo.src = "image/logo-white-blue.png";
       localStorage.setItem("imgLogo", "image/logo-white-blue.png");
-      console.log("yes");
     } else if (e.target.dataset.color === "#e91e63") {
       logo.src = "image/logo-white-2.png";
       localStorage.setItem("imgLogo", "image/logo-white-2.png");
-
-      console.log("yes");
     } else if (e.target.dataset.color === "#4caf50") {
       logo.src = "image/logo-white-green.png";
       localStorage.setItem("imgLogo", "image/logo-white-green.png");
-
-      console.log("yes");
     } else {
       logo.src = "image/logo-white-orange.png";
       localStorage.setItem("imgLogo", "image/logo-white-orange.png");
+    }
+  });
+});
+// Start Change Image hero
+colorsLi.forEach((li) => {
+  li.addEventListener("click", (e) => {
+    if (e.target.dataset.color === "#ed1c24") {
+      heroLan.src = "image/lan.png";
+      localStorage.setItem("heroLan", "image/lan.png");
+    } else if (e.target.dataset.color === "#03a9f4") {
+      heroLan.src = "image/lan-blue.png";
+      localStorage.setItem("heroLan", "image/lan-orange.png");
+    } else if (e.target.dataset.color === "#e91e63") {
+      heroLan.src = "image/lan-2.png";
+      localStorage.setItem("heroLan", "image/lan-2.png");
+    } else if (e.target.dataset.color === "#4caf50") {
+      heroLan.src = "image/lan-green.png";
+      localStorage.setItem("heroLan", "image/lan-green.png");
+    } else {
+      heroLan.src = "image/lan-orange.png";
+      localStorage.setItem("heroLan", "image/lan-orange.png");
     }
   });
 });
