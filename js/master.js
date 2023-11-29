@@ -29,6 +29,14 @@ if (backgroundLocalItem !== null) {
     document.querySelector(".background-random .no").classList.add("active");
   }
 }
+// Check if imgLogo of LocalStorage
+
+let logo = document.querySelector(".logo img");
+let logoChange = localStorage.getItem("imgLogo");
+if (logoChange !== null) {
+  logo.src = logoChange;
+}
+
 // Start Setting Box
 let setting = document.querySelector(".setting i");
 let settingBox = document.querySelector(".setting-box");
@@ -64,6 +72,33 @@ colorsLi.forEach((li) => {
   });
 });
 // End Option Box Color
+// Start Change Image Logo
+colorsLi.forEach((li) => {
+  li.addEventListener("click", (e) => {
+    if (e.target.dataset.color === "#ed1c24") {
+      logo.src = "image/logo-white-red.png";
+      localStorage.setItem("imgLogo", "image/logo-white-red.png");
+    } else if (e.target.dataset.color === "#03a9f4") {
+      logo.src = "image/logo-white-blue.png";
+      localStorage.setItem("imgLogo", "image/logo-white-blue.png");
+      console.log("yes");
+    } else if (e.target.dataset.color === "#e91e63") {
+      logo.src = "image/logo-white-2.png";
+      localStorage.setItem("imgLogo", "image/logo-white-2.png");
+
+      console.log("yes");
+    } else if (e.target.dataset.color === "#4caf50") {
+      logo.src = "image/logo-white-green.png";
+      localStorage.setItem("imgLogo", "image/logo-white-green.png");
+
+      console.log("yes");
+    } else {
+      logo.src = "image/logo-white-orange.png";
+      localStorage.setItem("imgLogo", "image/logo-white-orange.png");
+    }
+  });
+});
+
 // Start Option Box background random
 const backgroundEl = document.querySelectorAll(".background-random span");
 backgroundEl.forEach((span) => {
