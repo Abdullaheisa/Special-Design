@@ -193,3 +193,48 @@ window.onscroll = function () {
     });
   }
 };
+let allImageGa = document.querySelectorAll(".image-box img");
+allImageGa.forEach((img) => {
+  img.onclick = (e) => {
+    // create Popup Overlay
+    let popupOverlay = document.createElement("div");
+    // Add ClassName To Popup Overlay
+    popupOverlay.className = "popup-overlay";
+    // Append Popup Overlay to body
+    document.body.appendChild(popupOverlay);
+    // Create Popup Box
+    let popupBox = document.createElement("div");
+    // Add Class Name To Popup Box
+    popupBox.className = "popup-box open";
+    if (img.alt !== null) {
+      // Create Heading Alt
+      let headingImg = document.createElement("h2");
+      headingImg.className = "heading-img";
+      let textHeadingImg = document.createTextNode(img.alt);
+      headingImg.appendChild(textHeadingImg);
+      popupBox.appendChild(headingImg);
+    }
+    // Create Img
+    let imgPopup = document.createElement("img");
+    imgPopup.src = img.src;
+    // Append The Img popup to Popup Box
+    popupBox.appendChild(imgPopup);
+    // Append The Popup Box to body
+    document.body.appendChild(popupBox);
+    // Create Close Button
+    let closeButton = document.createElement("div");
+    closeButton.className = "close-button";
+    // create Text Close Button
+    let txtCloseButton = document.createTextNode("X");
+    // Append Text to close Button
+    closeButton.appendChild(txtCloseButton);
+    // Append close Button to Popup Box
+    popupBox.appendChild(closeButton);
+  };
+});
+document.addEventListener("click", (e) => {
+  if (e.target.className == "close-button") {
+    e.target.parentNode.remove();
+    document.querySelector(".popup-overlay").remove();
+  }
+});
