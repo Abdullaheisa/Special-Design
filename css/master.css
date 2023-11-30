@@ -400,6 +400,11 @@ header .link-container button span {
   margin: 5px;
   cursor: pointer;
 }
+@media (max-width: 767px) {
+  .gallery .image-box img {
+    width: 85%;
+  }
+}
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -418,9 +423,15 @@ header .link-container button span {
   padding: 20px;
   z-index: 1001;
 }
+@media (max-width: 767px) {
+  .popup-box {
+    width: 85%;
+    padding: 10px;
+  }
+}
 .popup-box .heading-img {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
   color: var(--main-color);
   text-align: center;
   margin: 0 0 10px;
