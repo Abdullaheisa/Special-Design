@@ -508,7 +508,9 @@ header .link-container button span {
 @media (max-width: 767px) {
   .timeline .timeline-content .left,
   .timeline .timeline-content .right {
-    width: 100%;
+    width: 85%;
+    float: none;
+    margin: 0 auto 20px;
   }
 }
 .timeline .timeline-content .left::before,
