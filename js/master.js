@@ -206,7 +206,7 @@ window.onscroll = function () {
   for (let i = 0; i < timelineLeft.length; i++) {
     if (
       window.scrollY >=
-      timeline.offsetTop + timelineLeft[i].offsetTop - 250
+      timeline.offsetTop + timelineLeft[i].offsetTop - 300
     ) {
       timelineLeft[i].style.opacity = 1;
     }
@@ -214,7 +214,7 @@ window.onscroll = function () {
   for (let i = 0; i < timelineRight.length; i++) {
     if (
       window.scrollY >=
-      timeline.offsetTop + timelineRight[i].offsetTop - 250
+      timeline.offsetTop + timelineRight[i].offsetTop - 300
     ) {
       timelineRight[i].style.opacity = 1;
     }
