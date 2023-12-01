@@ -505,6 +505,12 @@ header .link-container button span {
 .timeline .timeline-content .right {
   float: right;
 }
+@media (max-width: 767px) {
+  .timeline .timeline-content .left,
+  .timeline .timeline-content .right {
+    width: 100%;
+  }
+}
 .timeline .timeline-content .left::before,
 .timeline .timeline-content .right::before {
   content: "";
@@ -521,6 +527,12 @@ header .link-container button span {
 }
 .timeline .timeline-content .right::before {
   left: -35px;
+}
+@media (max-width: 767px) {
+  .timeline .timeline-content .left::before,
+  .timeline .timeline-content .right::before {
+    display: none;
+  }
 }
 .timeline .timeline-content .left::after,
 .timeline .timeline-content .right::after {
@@ -539,6 +551,12 @@ header .link-container button span {
 .timeline .timeline-content .right::after {
   border-color: transparent #fff transparent transparent;
   left: -20px;
+}
+@media (max-width: 767px) {
+  .timeline .timeline-content .left::after,
+  .timeline .timeline-content .right::after {
+    display: none;
+  }
 }
 .clearfix {
   clear: both;
