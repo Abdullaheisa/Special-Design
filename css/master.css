@@ -8,6 +8,7 @@ body {
   font-family: "Open Sans", sans-serif;
   margin: 0;
   padding: 0;
+  height: 10000px;
 }
 ul {
   list-style: none;
@@ -456,3 +457,106 @@ header .link-container button span {
   max-width: 100%;
 }
 /* End Gallery */
+/* Start Timeline */
+.timeline {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #eee;
+}
+.timeline .timeline-content {
+  position: relative;
+  overflow: hidden;
+}
+.timeline .timeline-content::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: var(--main-color);
+  left: 50%;
+  margin-left: -1px;
+  top: 0;
+}
+.timeline .timeline-content .year {
+  text-align: center;
+  font-weight: bold;
+  font-size: 17px;
+  border-radius: 4px;
+  background-color: var(--main-color);
+  width: fit-content;
+  margin: 20px auto;
+  padding: 2px 5px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+.timeline .timeline-content .left,
+.timeline .timeline-content .right {
+  width: calc(50% - 25px);
+  margin-bottom: 40px;
+  position: relative;
+  opacity: 0;
+  transition: all 0.5s linear;
+}
+.timeline .timeline-content .left {
+  float: left;
+  /* left: -500px; */
+}
+.timeline .timeline-content .right {
+  float: right;
+}
+.timeline .timeline-content .left::before,
+.timeline .timeline-content .right::before {
+  content: "";
+  width: 14px;
+  position: absolute;
+  height: 14px;
+  border: 3px solid var(--main-color);
+  background-color: #fff;
+  border-radius: 50%;
+  top: 20px;
+}
+.timeline .timeline-content .left::before {
+  right: -35px;
+}
+.timeline .timeline-content .right::before {
+  left: -35px;
+}
+.timeline .timeline-content .left::after,
+.timeline .timeline-content .right::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px;
+}
+.timeline .timeline-content .left::after {
+  border-color: transparent transparent transparent #fff;
+  right: -20px;
+}
+.timeline .timeline-content .right::after {
+  border-color: transparent #fff transparent transparent;
+  left: -20px;
+}
+.clearfix {
+  clear: both;
+}
+.timeline .timeline-content .content {
+  background-color: #fff;
+  padding: 20px;
+}
+.timeline .timeline-content .content h3 {
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 25px;
+  margin: 0 0 10px;
+}
+
+.timeline .timeline-content .content p {
+  line-height: 1.7;
+  color: #666;
+  margin: 0;
+}
+/* End Timeline */

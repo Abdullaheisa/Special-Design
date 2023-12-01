@@ -186,16 +186,48 @@ backgroundRandomize();
 // Select skills Selector
 let ourSkills = document.querySelector(".our-skills");
 let allSkills = document.querySelectorAll(".our-skills .skill-progress span");
+let timeline = document.querySelector(".timeline");
+let timelineLeft = document.querySelectorAll(".timeline .left");
+let timelineRight = document.querySelectorAll(".timeline .right");
+// for (let i = 0; i <= timelineLeft.length; i++) {
+//   console.log(timelineLeft[i].offsetTop);
+// }
 window.onscroll = function () {
   if (window.scrollY >= ourSkills.offsetTop - 100) {
     allSkills.forEach((span) => {
       span.style.width = span.dataset.progress;
     });
   }
+  // timelineLeft.forEach((left) => {
+  //   if (window.scrollY >= left.offsetTop) {
+  //     left.style.opacity = 1;
+  //   }
+  // });
+  for (let i = 0; i < timelineLeft.length; i++) {
+    if (
+      window.scrollY >=
+      timeline.offsetTop + timelineLeft[i].offsetTop - 100
+    ) {
+      timelineLeft[i].style.opacity = 1;
+    }
+  }
+  for (let i = 0; i < timelineRight.length; i++) {
+    if (
+      window.scrollY >=
+      timeline.offsetTop + timelineRight[i].offsetTop - 100
+    ) {
+      timelineRight[i].style.opacity = 1;
+    }
+  }
+  // timelineRight.forEach((right) => {
+  //   if (window.scrollY >= right.offsetTop) {
+  //     right.style.opacity = 1;
+  //   }
+  // });
 };
 let allImageGa = document.querySelectorAll(".image-box img");
 allImageGa.forEach((img) => {
-  img.onclick = (e) => {
+  img.onclick = () => {
     // create Popup Overlay
     let popupOverlay = document.createElement("div");
     // Add ClassName To Popup Overlay
