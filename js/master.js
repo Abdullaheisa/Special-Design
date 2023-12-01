@@ -198,11 +198,6 @@ window.onscroll = function () {
       span.style.width = span.dataset.progress;
     });
   }
-  // timelineLeft.forEach((left) => {
-  //   if (window.scrollY >= left.offsetTop) {
-  //     left.style.opacity = 1;
-  //   }
-  // });
   for (let i = 0; i < timelineLeft.length; i++) {
     if (
       window.scrollY >=
@@ -219,11 +214,6 @@ window.onscroll = function () {
       timelineRight[i].style.opacity = 1;
     }
   }
-  // timelineRight.forEach((right) => {
-  //   if (window.scrollY >= right.offsetTop) {
-  //     right.style.opacity = 1;
-  //   }
-  // });
 };
 let allImageGa = document.querySelectorAll(".image-box img");
 allImageGa.forEach((img) => {
