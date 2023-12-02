@@ -115,9 +115,9 @@ a {
   opacity: 1;
   border-color: #ffffff;
 }
-.setting-box .background-random .yes,
-.setting-box .background-random .no {
-  background-color: #009688;
+.setting-box .option-box .yes,
+.setting-box .option-box .no {
+  background-color: var(--main-color);
   font-size: 12px;
   width: 50px;
   color: #fff;
@@ -128,10 +128,70 @@ a {
   opacity: 0.5;
   cursor: pointer;
 }
-.setting-box .background-random span.active {
+.setting-box .option-box span.active {
   opacity: 1;
 }
+.reset {
+  background-color: #b30000;
+  color: #fff;
+  text-align: center;
+  padding: 7px;
+  border-radius: 10px;
+  width: 85%;
+  margin: 10px auto;
+  cursor: pointer;
+}
 /* End Setting Box */
+/* Start Bullet */
+.nav-bullet {
+  position: fixed;
+  width: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0px;
+  z-index: 1000;
+}
+.nav-bullet .bullet {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--main-color);
+  border-radius: 50%;
+  margin: 5px auto;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.nav-bullet .bullet .toolTip {
+  background-color: var(--main-color);
+  width: 100px;
+  color: #fff;
+  padding: 8px 10px;
+  position: absolute;
+  right: 32px;
+  top: -10px;
+  font-size: 13px;
+  text-align: center;
+  cursor: default;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.3s;
+}
+.nav-bullet .bullet .toolTip::after {
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent transparent var(--main-color);
+  height: 0;
+  width: 0;
+  position: absolute;
+  right: -19px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.nav-bullet .bullet:hover .toolTip {
+  opacity: 1;
+}
+/* End Bullet */
 .landing-page {
   background: url(../image/01.jpg) no-repeat bottom center;
   background-size: cover;

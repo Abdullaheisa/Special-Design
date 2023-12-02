@@ -43,7 +43,6 @@ let heroChange = localStorage.getItem("heroLan");
 if (heroChange !== null) {
   heroLan.src = heroChange;
 }
-
 // Start Setting Box
 let setting = document.querySelector(".setting i");
 let settingBox = document.querySelector(".setting-box");
@@ -126,10 +125,7 @@ colorsLi.forEach((li) => {
 const backgroundEl = document.querySelectorAll(".background-random span");
 backgroundEl.forEach((span) => {
   span.addEventListener("click", (e) => {
-    e.target.parentElement.querySelectorAll(".active").forEach((span) => {
-      span.classList.remove("active");
-    });
-    e.target.classList.toggle("active");
+    handleActive(e);
     if (e.target.dataset.background === "yes") {
       randomBackgroundOption = true;
       backgroundRandomize();
@@ -143,6 +139,38 @@ backgroundEl.forEach((span) => {
   });
 });
 // End Option Box Color
+// Check if bullet of LocalStorage
+let showLocal = localStorage.getItem("option-bullet");
+let navBullet = document.querySelector(".nav-bullet");
+let bullets = document.querySelectorAll(".nav-bullet .bullet");
+const showBullets = document.querySelectorAll(".show-bullets span");
+if (showLocal !== null) {
+  showBullets.forEach((bullet) => {
+    bullet.classList.remove("active");
+  });
+  if (showLocal === "block") {
+    navBullet.style.display = "block";
+    document.querySelector(".show-bullets .yes").classList.add("active");
+  } else {
+    navBullet.style.display = "none";
+    document.querySelector(".show-bullets .no").classList.add("active");
+  }
+}
+// Start Show Bullet
+
+showBullets.forEach((bullet) => {
+  bullet.addEventListener("click", (e) => {
+    handleActive(e);
+    if (e.target.dataset.show === "yes") {
+      navBullet.style.display = "block";
+      localStorage.setItem("option-bullet", "block");
+    } else {
+      navBullet.style.display = "none";
+      localStorage.setItem("option-bullet", "none");
+    }
+  });
+});
+
 // End Setting Box
 
 // start toggle menu
@@ -189,9 +217,6 @@ let allSkills = document.querySelectorAll(".our-skills .skill-progress span");
 let timeline = document.querySelector(".timeline");
 let timelineLeft = document.querySelectorAll(".timeline .left");
 let timelineRight = document.querySelectorAll(".timeline .right");
-// for (let i = 0; i <= timelineLeft.length; i++) {
-//   console.log(timelineLeft[i].offsetTop);
-// }
 window.onscroll = function () {
   if (window.scrollY >= ourSkills.offsetTop - 100) {
     allSkills.forEach((span) => {
@@ -260,3 +285,32 @@ document.addEventListener("click", (e) => {
     document.querySelector(".popup-overlay").remove();
   }
 });
+// Start Bullet
+let links = document.querySelectorAll(".link-container .link a");
+function scrollTo(element) {
+  element.forEach((ele) => {
+    ele.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelector(e.target.dataset.section).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+}
+scrollTo(bullets);
+scrollTo(links);
+function handleActive(ev) {
+  ev.target.parentElement.querySelectorAll(".active").forEach((span) => {
+    span.classList.remove("active");
+  });
+  ev.target.classList.toggle("active");
+}
+// button Reset
+document.querySelector(".reset").onclick = (e) => {
+  localStorage.removeItem("option-bullet");
+  localStorage.removeItem("background-option");
+  localStorage.removeItem("color-option");
+  localStorage.removeItem("heroLan");
+  localStorage.removeItem("imgLogo");
+  window.location.reload();
+};
